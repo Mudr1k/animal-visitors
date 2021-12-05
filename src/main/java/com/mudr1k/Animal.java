@@ -1,5 +1,4 @@
 package com.mudr1k;
 
-public interface Animal {
-    void accept(Visitor visitor);
+public interface Animal extends Food {
 }

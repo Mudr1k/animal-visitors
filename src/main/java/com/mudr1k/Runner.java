@@ -9,13 +9,19 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
-        List<Animal> list = List.of(new Lion(), new Goat(), new Cow(), new Grass());
+        List<Food> foods = List.of(new Lion(), new Goat(), new Cow(), new Grass());
+        List<Visitor> visitors = List.of(new LionDinner(), new GoatDinner(), new CowDinner());
 
-        Dinner dinner = new Dinner();
-
-        for (Animal animal : list) {
-            System.out.println(animal.getClass().getSimpleName() + " : ");
-            animal.accept(dinner);
+        for (Visitor visitor : visitors) {
+            for (Food food : foods) {
+                try {
+                    food.accept(visitor);
+                } catch (NoCannibalsAllowedException e) {
+                    System.err.println(e.getMessage() + " - No cannibals allowed");
+                } catch (IndigestionException e) {
+                    System.err.println(e.getMessage() + " - Indigestion");
+                }
+            }
         }
     }
 }

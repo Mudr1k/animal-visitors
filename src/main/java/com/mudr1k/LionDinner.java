@@ -5,25 +5,25 @@ import com.mudr1k.animal.Goat;
 import com.mudr1k.animal.Lion;
 import com.mudr1k.plant.Grass;
 
-public class Dinner implements Visitor{
+public class LionDinner implements Visitor {
     @Override
     public void eat(Lion lion) {
-        System.out.println(" eat " + lion.getClass().getSimpleName());
+        throw new NoCannibalsAllowedException("Lion eat Lion");
     }
 
     @Override
     public void eat(Goat goat) {
-        System.out.println(" eat " + goat.getClass().getSimpleName());
+        System.out.println("Lion eat Goat");
     }
 
     @Override
     public void eat(Cow cow) {
-        System.out.println(" eat " + cow.getClass().getSimpleName());
+        System.out.println("Lion eat Cow");
 
     }
 
     @Override
     public void eat(Grass grass) {
-        System.out.println(" eat " + grass.getClass().getSimpleName());
+        throw new IndigestionException("Lion eat Grass");
     }
 }

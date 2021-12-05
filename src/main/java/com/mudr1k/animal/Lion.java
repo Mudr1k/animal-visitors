@@ -6,7 +6,6 @@ import com.mudr1k.Visitor;
 public class Lion implements Animal {
     @Override
     public void accept(Visitor visitor) {
-        visitor.eat(new Cow());
-        visitor.eat(new Goat());
+        visitor.eat(this);
     }
 }
